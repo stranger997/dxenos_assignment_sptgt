@@ -7,58 +7,6 @@
 	},
 	"item": [
 		{
-			"name": "Show all active listings",
-			"id": "72344051-76ef-44f1-8809-4e65c59311ba",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true,
-				"disabledSystemHeaders": {
-					"accept": true
-				}
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "{{base_url}}/api",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"api"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Show selected active listing",
-			"id": "e3961c31-42dc-4451-bb16-61b437529a45",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{base_url}}/api/3",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"api",
-						"3"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "login",
 			"event": [
 				{

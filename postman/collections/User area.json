@@ -28,36 +28,13 @@
 							}
 						],
 						"url": {
-							"raw": "{{base_url}}/api/my_listings",
+							"raw": "{{base_url}}/api/listings",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"api",
-								"my_listings"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Show user selected listing",
-					"id": "0f64a9f0-1c5b-43c4-9167-1e05c863e760",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/api/my_listings/10",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"api",
-								"my_listings",
-								"10"
+								"listings"
 							]
 						}
 					},
@@ -111,74 +88,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{base_url}}/api/my_listings",
+							"raw": "{{base_url}}/api/listings",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"api",
-								"my_listings"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Edit Selected Listing",
-					"id": "c1e2a851-3316-47f1-ba29-ec105feb202b",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true,
-						"disabledSystemHeaders": {}
-					},
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text",
-								"disabled": true
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "area",
-									"value": "Αθήνα",
-									"type": "text"
-								},
-								{
-									"key": "availability",
-									"value": "ενοικίαση",
-									"type": "text"
-								},
-								{
-									"key": "size",
-									"value": "700",
-									"type": "text"
-								},
-								{
-									"key": "price",
-									"value": "75",
-									"type": "text"
-								},
-								{
-									"key": "active",
-									"value": "yes",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{base_url}}/api/my_listings/12",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"api",
-								"my_listings",
-								"12"
+								"listings"
 							]
 						}
 					},
@@ -203,13 +119,13 @@
 							}
 						],
 						"url": {
-							"raw": "{{base_url}}/api/my_listings/12",
+							"raw": "{{base_url}}/api/listings/12",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"api",
-								"my_listings",
+								"listings",
 								"12"
 							]
 						}
