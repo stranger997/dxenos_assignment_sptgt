@@ -10,9 +10,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
-// Public
 class ListingController extends Controller
 {
+    // Public------------------------------------------------
     /**
      * Display a listing of the resource.
      *
@@ -43,7 +43,6 @@ class ListingController extends Controller
                 'message' => 'Property not found'
             ]);
         }
-
         return response()->json([
             "success" => true,
             "message" => "Property found.",
@@ -51,7 +50,17 @@ class ListingController extends Controller
         ]);
     }
 
-    //User area
+    //User area----------------------------------------------
+    /**
+     * Display a listing of the resource.
+     *
+     * @return JsonResponse
+     */
+    public function loggedInUserListings(Request $request){
+        $listings = $request->user()->userListings();
+        return $listings;
+    }
+
     public function loggedInUserSelectedListing(Request $request, Listing $listing)
     {
         $user = $request->user();
@@ -62,7 +71,6 @@ class ListingController extends Controller
                 'message' => 'Property not found'
             ]);
         }
-
         return response()->json([
             "success" => true,
             "message" => "Property found.",
@@ -70,7 +78,7 @@ class ListingController extends Controller
         ]);
     }
 
-        /**
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -88,6 +96,7 @@ class ListingController extends Controller
             'price' => $input['price'],
             'active' => $input['active'],
         ];
+
         $validator = Validator::make($request_data, [
             'user_id'=> 'required',
             'area'=> ['required', 
@@ -125,14 +134,15 @@ class ListingController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return JsonResponse
+     * @return \Illuminate\Http\JsonResponse
      */
     public function update(Request $request, Listing $listing)
     {
+
+        $input = $request->all();
         $user = $request->user();
         $owner = $listing->user();
 
-        $input = $request->all();
         $request_data = [
             'area' => $input['area'],
             'availability' => $input['availability'],
@@ -140,6 +150,7 @@ class ListingController extends Controller
             'price' => $input['price'],
             'active' => $input['active'],
         ];
+
         $validator = Validator::make($request_data, [
             'area'=> ['required', 
                      Rule::in(['Αθήνα', 'Θεσσαλονίκη', 'Πάτρα', 'Ηράκλειο']),

@@ -4,7 +4,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\ListingController;
 
 /*
@@ -27,7 +26,7 @@ Route::middleware(['auth:api'])->group(function () {
     Route::post('logout', [AuthController::class, 'logout']);
     // listings
     Route::group(['prefix' => 'my_listings'], function() {
-        Route::get('/', [UserController::class, 'loggedInUserListings']);
+        Route::get('/', [ListingController::class, 'loggedInUserListings']);
         Route::post('/', [ListingController::class, 'store']);
         Route::get('/{listing}', [ListingController::class, 'loggedInUserSelectedListing']);
         Route::put('/{listing}', [ListingController::class, 'update']);

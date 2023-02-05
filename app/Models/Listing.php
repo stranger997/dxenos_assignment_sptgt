@@ -21,4 +21,5 @@ class Listing extends Model
     {
         return $this->belongsTo('App\Models\User', 'user_id' )->first();
     }
+
 }
