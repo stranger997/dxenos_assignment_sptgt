@@ -40,10 +40,10 @@ class ListingController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\JsonResponse
+     * @param  CreateListingRequest  $request
+     * @return JsonResponse
      */
-    public function store(CreateListingRequest $request)
+    public function store(CreateListingRequest $request): JsonResponse
     {
 
         $listing = $this->listingService->createListingForUser($request);
@@ -58,10 +58,11 @@ class ListingController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Request $request
+     * @param Listing $listing
      * @return JsonResponse
      */
-    public function destroy(Request $request, Listing $listing)
+    public function destroy(Request $request, Listing $listing): JsonResponse
     {
         $this->listingService->deleteListingOfUser($listing);
 
