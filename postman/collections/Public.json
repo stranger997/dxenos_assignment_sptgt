@@ -61,7 +61,8 @@
 						"api",
 						"login"
 					]
-				}
+				},
+				"description": "## Information\n\nLogin User\n\n## Body request\n\n| **Parameter** | **Type** | **Rule** |\n| --- | --- | --- |\n| email | email | required |\n| password | string | required. min:8 |"
 			},
 			"response": []
 		}

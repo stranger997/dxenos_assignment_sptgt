@@ -36,7 +36,8 @@
 								"api",
 								"listings"
 							]
-						}
+						},
+						"description": "## Information\n\nShow user listings"
 					},
 					"response": []
 				},
@@ -96,7 +97,8 @@
 								"api",
 								"listings"
 							]
-						}
+						},
+						"description": "StartFragment\n\n## Information\n\nCreate new Listing\n\n## Body request\n\n| **Parameter** | **Type** | **Rule** |\n| --- | --- | --- |\n| area | enum | required', \\['Αθήνα', 'Θεσσαλονίκη', 'Πάτρα', 'Ηράκλειο'\\] |\n| availability | enum | 'required', \\['ενοικίαση', 'πώληση'\\] |\n| size | integer | required, integer, between:20,1000 |\n| price | integer | required, integer, between:50,5000000 |\n| active | boolean | required, boolean |\n\nEndFragment"
 					},
 					"response": []
 				},
@@ -128,7 +130,8 @@
 								"listings",
 								"12"
 							]
-						}
+						},
+						"description": "## Information\n\nDelete Listing"
 					},
 					"response": []
 				}
@@ -162,7 +165,8 @@
 						"api",
 						"logout"
 					]
-				}
+				},
+				"description": "## Information\n\nLogout User"
 			},
 			"response": []
 		}
