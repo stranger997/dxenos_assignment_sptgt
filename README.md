@@ -1,6 +1,6 @@
-# Aio.v1.api
+# Spitogatos_Assignment
 
-A laravel api, which uses passport (for authentication and authorization).
+A laravel application, which uses laravel/passport (for authentication and authorization).
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
@@ -24,7 +24,7 @@ A laravel api, which uses passport (for authentication and authorization).
 ### Download Project
 Inside the folder of your choice, type:
 ```
-git clone https://github.com/stranger997/dxenos_assignment.git
+git clone https://github.com/stranger997/dxenos_assignment_sptgt.git
 ```
 ### Create Database
 This project is using MySQL database schema. <br>
