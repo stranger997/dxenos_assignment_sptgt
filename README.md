@@ -26,10 +26,12 @@ Inside the folder of your choice, type:
 ```
 git clone https://github.com/stranger997/dxenos_assignment_sptgt.git
 ```
+(A new folder will be created.)
 ### Create Database
 This project is using MySQL database schema. <br>
 Make sure that you have the MySQL installed. <br>
-Create a database using MySQL dbms, choose a name of your choice (ex. exampledb)
+Create a database using MySQL dbms, choose a name of your choice (ex. exampledb) <br>
+utf8mb4_general_ci
 ### Environment File
 Inside the root directory of the project, there is a file named .env.example. <br>
 Rename it to .env <br>

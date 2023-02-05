@@ -17,24 +17,17 @@ use App\Http\Controllers\Api\ListingController;
 |
 */
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-
 // User area
 Route::middleware(['auth:api'])->group(function () {
     Route::post('logout', [AuthController::class, 'logout']);
     // listings
-    Route::group(['prefix' => 'my_listings'], function() {
-        Route::get('/', [ListingController::class, 'loggedInUserListings']);
+    Route::group(['prefix' => 'listings'], function() {
+        Route::get('/', [ListingController::class, 'getListings']);
         Route::post('/', [ListingController::class, 'store']);
-        Route::get('/{listing}', [ListingController::class, 'loggedInUserSelectedListing']);
-        Route::put('/{listing}', [ListingController::class, 'update']);
+
         Route::delete('/{listing}', [ListingController::class, 'destroy']);
     });
 });
 
 // Public
 Route::post('login', [AuthController::class, 'login']);
-Route::get('/', [ListingController::class, 'show_public']);
-Route::get('/{listing}', [ListingController::class, 'show_selected_public']);

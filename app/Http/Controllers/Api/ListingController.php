@@ -12,70 +12,14 @@ use Illuminate\Validation\Rule;
 
 class ListingController extends Controller
 {
-    // Public------------------------------------------------
     /**
      * Display a listing of the resource.
      *
      * @return JsonResponse
      */
-    public function show_public()
-    {
-        $listings = Listing::where('active', 'yes')->get();
-
-        return response()->json([
-            "status" => true,
-            "message" => "Available properties list",
-            "data" => $listings
-        ]);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function show_selected_public(Listing $listing)
-    {
-        if (is_null($listing)||$listing['active']=='no') {
-            return response()->json([
-                'status' => false,
-                'message' => 'Property not found'
-            ]);
-        }
-        return response()->json([
-            "success" => true,
-            "message" => "Property found.",
-            "data" => $listing
-        ]);
-    }
-
-    //User area----------------------------------------------
-    /**
-     * Display a listing of the resource.
-     *
-     * @return JsonResponse
-     */
-    public function loggedInUserListings(Request $request){
+    public function getListings(Request $request){
         $listings = $request->user()->userListings();
         return $listings;
-    }
-
-    public function loggedInUserSelectedListing(Request $request, Listing $listing)
-    {
-        $user = $request->user();
-        $owner = $listing->user();
-        if (is_null($listing)||$user['id']!=$owner['id']) {
-            return response()->json([
-                'status' => false,
-                'message' => 'Property not found'
-            ]);
-        }
-        return response()->json([
-            "success" => true,
-            "message" => "Property found.",
-            "data" => $listing
-        ]);
     }
 
     /**
@@ -125,64 +69,6 @@ class ListingController extends Controller
         return response()->json([
             "status" => true,
             "message" => "Listing stored successfully.",
-            "data" => $listing
-        ]);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function update(Request $request, Listing $listing)
-    {
-
-        $input = $request->all();
-        $user = $request->user();
-        $owner = $listing->user();
-
-        $request_data = [
-            'area' => $input['area'],
-            'availability' => $input['availability'],
-            'size' => $input['size'],
-            'price' => $input['price'],
-            'active' => $input['active'],
-        ];
-
-        $validator = Validator::make($request_data, [
-            'area'=> ['required', 
-                     Rule::in(['Αθήνα', 'Θεσσαλονίκη', 'Πάτρα', 'Ηράκλειο']),
-                    ],
-            'availability'=> ['required', 
-                             Rule::in(['ενοικίαση', 'πώληση']),
-                            ],
-            'size'=> 'required|integer|between:20,1000',
-            'price'=> 'required|integer|between:50,5000000',
-            'active'=> ['required', 
-                        Rule::in(['yes', 'no']),
-                        ],
-        ]);
-
-        if($validator->fails()||$user['id']!=$owner['id']){
-            return response()->json([
-                'status' => false,
-                'message' => 'Invalid Input',
-                'error' => $validator->errors()
-            ]);
-        }
-
-        $listing->area = $request_data['area'];
-        $listing->availability = $request_data['availability'];
-        $listing->size = $request_data['size'];
-        $listing->price = $request_data['price'];
-        $listing->active = $request_data['active'];
-        $listing->update();
-
-        return response()->json([
-            "status" => true,
-            "message" => "Listing updated successfully.",
             "data" => $listing
         ]);
     }
