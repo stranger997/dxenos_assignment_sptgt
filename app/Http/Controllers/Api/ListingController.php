@@ -7,19 +7,34 @@ use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use App\Models\Listing;
 use Symfony\Component\HttpFoundation\Response;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
+use App\Services\Interfaces\ListingServiceInterface;
+use App\Http\Requests\CreateListingRequest;
 
 class ListingController extends Controller
 {
+    private $listingService;
+
     /**
-     * Display a listing of the resource.
+     * ListingController constructor
+     */
+    public function __construct(ListingServiceInterface $listingService)
+    {
+        $this->listingService = $listingService;
+    }
+    /**
+     * Display listings for logged in user
      *
      * @return JsonResponse
      */
-    public function getListings(Request $request){
-        $listings = $request->user()->userListings();
-        return $listings;
+    public function getListings(Request $request): JsonResponse
+    {
+        $listings = $this->listingService->getListings();
+
+        return response()->json([
+            "status" => true,
+            "message" => "GET_LISTINGS",
+            "data" => $listings
+        ]);
     }
 
     /**
@@ -28,44 +43,11 @@ class ListingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(Request $request)
+    public function store(CreateListingRequest $request)
     {
-        $input = $request->all();
-        $user = $request->user();
-        $request_data = [
-            'user_id'=> $user['id'],
-            'area' => $input['area'],
-            'availability' => $input['availability'],
-            'size' => $input['size'],
-            'price' => $input['price'],
-            'active' => $input['active'],
-        ];
 
-        $validator = Validator::make($request_data, [
-            'user_id'=> 'required',
-            'area'=> ['required', 
-                     Rule::in(['Αθήνα', 'Θεσσαλονίκη', 'Πάτρα', 'Ηράκλειο']),
-                    ],
-            'availability'=> ['required', 
-                             Rule::in(['ενοικίαση', 'πώληση']),
-                            ],
-            'size'=> 'required|integer|between:20,1000',
-            'price'=> 'required|integer|between:50,5000000',
-            'active'=> ['required', 
-                        Rule::in(['yes', 'no']),
-                        ],
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'status' => false,
-                'message' => 'Invalid Input',
-                'error' => $validator->errors()
-            ]);
-        }
-
-        $listing = Listing::create($request_data);
-
+        $listing = $this->listingService->createListingForUser($request);
+        
         return response()->json([
             "status" => true,
             "message" => "Listing stored successfully.",
@@ -81,21 +63,11 @@ class ListingController extends Controller
      */
     public function destroy(Request $request, Listing $listing)
     {
-        $user = $request->user();
-        $owner = $listing->user();
+        $this->listingService->deleteListingOfUser($listing);
 
-        if($user['id']!=$owner['id']){
-            return response()->json([
-                'status' => false,
-                'message' => 'Invalid Action',
-            ]);
-        }
-
-        $listing->delete();
         return response()->json([
             "status" => true,
-            "message" => "Listing deleted successfully.",
-            "data" => $listing
+            "message" => "LISTING_DELETED",
         ]);
     }
 }

@@ -23,6 +23,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->app->bind(
+           'App\Services\Interfaces\ListingServiceInterface',
+            'App\Services\Implementations\ListingService',
+        );
+        $this->app->bind(
+            'App\Repositories\Interfaces\ListingRepositoryInterface',
+             'App\Repositories\Implementations\ListingRepository',
+         );
     }
 }

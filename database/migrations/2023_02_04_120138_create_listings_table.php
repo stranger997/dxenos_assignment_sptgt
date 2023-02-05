@@ -20,7 +20,7 @@ return new class extends Migration
             $table->enum('availability', array('ενοικίαση', 'πώληση'));
             $table->integer('size');
             $table->integer('price');
-            $table->enum('active', array('yes', 'no'));
+            $table->boolean('active');
             $table->timestamps();
 
             $table->foreign('user_id')
