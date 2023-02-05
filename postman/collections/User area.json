@@ -50,14 +50,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/api/my_listings/12",
+							"raw": "{{base_url}}/api/my_listings/10",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"api",
 								"my_listings",
-								"12"
+								"10"
 							]
 						}
 					},
