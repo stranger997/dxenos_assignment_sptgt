@@ -1,0 +1,286 @@
+{
+	"info": {
+		"_postman_id": "6d7edf30-0111-45ac-b947-26c152fbfc05",
+		"name": "User area",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "23322454-6d7edf30-0111-45ac-b947-26c152fbfc05"
+	},
+	"item": [
+		{
+			"name": "Listings",
+			"item": [
+				{
+					"name": "Show user listings",
+					"id": "fe33d30a-08e5-4e45-bd04-b3f33909314d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/my_listings",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"my_listings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show user selected listing",
+					"id": "0f64a9f0-1c5b-43c4-9167-1e05c863e760",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/my_listings/12",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"my_listings",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create new Listing",
+					"id": "f913c1a9-46a3-4f3b-b90f-2c3e6b8714ac",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "area",
+									"value": "Αθήνα",
+									"type": "text"
+								},
+								{
+									"key": "availability",
+									"value": "ενοικίαση",
+									"type": "text"
+								},
+								{
+									"key": "size",
+									"value": "50",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "50",
+									"type": "text"
+								},
+								{
+									"key": "active",
+									"value": "no",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/my_listings",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"my_listings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Selected Listing",
+					"id": "c1e2a851-3316-47f1-ba29-ec105feb202b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "area",
+									"value": "Αθήνα",
+									"type": "text"
+								},
+								{
+									"key": "availability",
+									"value": "ενοικίαση",
+									"type": "text"
+								},
+								{
+									"key": "size",
+									"value": "700",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "75",
+									"type": "text"
+								},
+								{
+									"key": "active",
+									"value": "yes",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/my_listings/12",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"my_listings",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete selected listing",
+					"id": "b694f9fd-8dd4-44bf-b354-571dda2aee6b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/my_listings/12",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"my_listings",
+								"12"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "77fe2898-9804-45bf-b8df-b1362cd558f7"
+		},
+		{
+			"name": "Logout",
+			"id": "b7f64613-1a28-4988-8800-68ef5a4920b2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/api/logout",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{access_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "58075c3e-4115-4d70-837d-deabc28cd659",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "87664f4c-8d76-4eaa-95a2-e3462ea254ab",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
