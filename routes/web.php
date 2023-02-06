@@ -14,12 +14,11 @@ use App\Http\Controllers\WebappController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::group( ['middleware' => 'guest' ], function(){
 Route::get('/', [WebappController::class, 'login']);
 Route::post('/', [WebappController::class, 'userLogin'])->name('user.login');
-
-// Route::group( ['middleware' => 'auth' ], function()
-// {
+});
+Route::group( ['middleware' => 'user_area' ], function(){
 Route::post('logout', [WebappController::class, 'logout']);
 Route::get('dashboard', [WebappController::class, 'dashboard'])->name('dashboard');
-// });
+});

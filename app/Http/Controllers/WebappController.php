@@ -32,7 +32,7 @@ class WebappController extends Controller
            session()->put('user', $response->json('user'));
            return redirect('/dashboard');
         }
-        return view('login');
+        return redirect('/');
     }  
 
     public function dashboard()
@@ -40,10 +40,10 @@ class WebappController extends Controller
         return view('dashboard');
     }  
 
-        public function logout(Request $request)
+        public function logout()
     {
         $response = Http::withHeaders(["Authorization" => "Bearer ".session()->get('token')])->post(env('API') . '/logout');
         session()-> flush(); 
-        return view('login');
+        return redirect('/');
     }  
 }
