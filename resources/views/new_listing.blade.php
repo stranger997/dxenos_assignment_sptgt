@@ -36,7 +36,7 @@
     </div>
     <br>
     <div class="">
-        <button type="submit" class="btn btn-success">Submit</button>
+        <button type="submit" class="btn btn-success" id="submit">Submit</button>
     </div>
 
     <div id="listing-errors"></div>
@@ -44,12 +44,14 @@
 </div>
 
 <script>
-  // let formData = {'area' : 'Αθήνα', 'size' : '100', 'price' : '100', 'availability' : "ενοικίαση", 'active' : '0'}; 
 $( "#add_listing_form" ).submit( function(){
   event.preventDefault();
   const form = document.getElementById('add_listing_form');
   const formData = new FormData(form);
   let $listingItems = $('#listing-items');
+  let $listingErrors = $('#listing-errors');
+  $listingErrors.empty();
+  $( "#submit" ).blur();
   $.ajax('/api/listings', 
   {
   type: "POST", 
@@ -67,8 +69,6 @@ $( "#add_listing_form" ).submit( function(){
   },
   error: function(a, b,c) {
     const errors = a.responseJSON.errors
-    console.log(errors)
-    let $listingErrors = $('#listing-errors');
     $.each(errors, function(i,error){
       const err = `<p>${error[0]}</p>`
       $listingErrors.append(err);  
