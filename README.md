@@ -69,7 +69,11 @@ In the prompt, you will be asked:
 php artisan key:generate
 ```
 ## Run Server
-In order to start a laravel server run the following command
+In order to start a laravel api server run the following command
+```
+php artisan serve --port=8001
+```
+In order to start a laravel webapp server run the following command
 ```
 php artisan serve
 ```
