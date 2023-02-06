@@ -14,9 +14,7 @@
 					"id": "fe33d30a-08e5-4e45-bd04-b3f33909314d",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true,
-						"disabledSystemHeaders": {
-							"accept": true
-						}
+						"disabledSystemHeaders": {}
 					},
 					"request": {
 						"method": "GET",
@@ -24,7 +22,8 @@
 							{
 								"key": "Accept",
 								"value": "application/json",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"url": {
@@ -46,7 +45,9 @@
 					"id": "f913c1a9-46a3-4f3b-b90f-2c3e6b8714ac",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true,
-						"disabledSystemHeaders": {}
+						"disabledSystemHeaders": {
+							"accept": true
+						}
 					},
 					"request": {
 						"method": "POST",
@@ -54,8 +55,7 @@
 							{
 								"key": "Accept",
 								"value": "application/json",
-								"type": "text",
-								"disabled": true
+								"type": "text"
 							}
 						],
 						"body": {
@@ -83,10 +83,15 @@
 								},
 								{
 									"key": "active",
-									"value": "no",
+									"value": "1",
 									"type": "text"
 								}
-							]
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
 							"raw": "{{base_url}}/api/listings",
@@ -121,17 +126,23 @@
 							}
 						],
 						"url": {
-							"raw": "{{base_url}}/api/listings/12",
+							"raw": "{{base_url}}/api/listings/:listing_id",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"api",
 								"listings",
-								"12"
+								":listing_id"
+							],
+							"variable": [
+								{
+									"key": "listing_id",
+									"value": "9"
+								}
 							]
 						},
-						"description": "## Information\n\nDelete Listing"
+						"description": "## Information\n\nDelete Listing\n\n## Url Parameters\n\n| **Parameter** | **Type** | **Rule** |\n| --- | --- | --- |\n| listing_id | int | required |"
 					},
 					"response": []
 				}

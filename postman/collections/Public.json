@@ -24,9 +24,7 @@
 			"id": "465ef841-98f5-4a13-9132-b99ce9efc7cf",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true,
-				"disabledSystemHeaders": {
-					"accept": true
-				}
+				"disabledSystemHeaders": {}
 			},
 			"request": {
 				"method": "POST",
@@ -34,7 +32,8 @@
 					{
 						"key": "Accept",
 						"value": "application/json",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					}
 				],
 				"body": {
