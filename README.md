@@ -38,6 +38,9 @@ Rename it to .env <br>
 It contains these values, that must be set according to the previously created database:<br>
 ```
 ...
+APP_URL=http://localhost:8000
+API=http://localhost:8001/api
+
 DB_DATABASE=exampledb
 DB_USERNAME=root
 DB_PASSWORD=
@@ -76,4 +79,32 @@ php artisan serve --port=8001
 In order to start a laravel webapp server run the following command
 ```
 php artisan serve
+```
+
+## How to use
+### Api Endopoints
+-- Postman collections are included on source code -- 
+
+### WebApp
+Use your browser of choice to navigate to:
+```
+http://localhost:8000
+```
+
+### login credentials:
+user1 : email::
+```
+user1@example.com
+```
+password: 
+```
+password
+```
+user2 : email::
+```
+user2@example.com
+```
+password: 
+```
+password
 ```

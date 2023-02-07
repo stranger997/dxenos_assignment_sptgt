@@ -32,7 +32,8 @@ class WebappController extends Controller
            session()->put('user', $response->json('user'));
            return redirect('/dashboard');
         }
-        return redirect('/');
+        $errors = json_decode($response)->error;
+        return redirect()->back()->withErrors($errors);
     }  
 
     public function dashboard()

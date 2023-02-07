@@ -5,7 +5,7 @@
     @csrf
     <div id="price-group" class="form-group">
       <label for="price">Τιμή</label>
-      <input type="text" class="form-control" id="price" name="price" placeholder="50 - 5000000 ευρώ" />
+      <input type="text" required="required" class="form-control" id="price" name="price" placeholder="50 - 5000000 ευρώ" />
     </div>
     <div id="area-group" class="form-group">
         <label for="area">Περιοχή:</label>
@@ -25,7 +25,7 @@
     </div>
     <div id="size-group" class="form-group">
       <label for="size">Τετραγωνικά μέτρα</label>
-      <input type="text" class="form-control" id="size" name="size" placeholder=" 20 - 1000 τ.μ." />
+      <input type="text" required="required" class="form-control" id="size" name="size" placeholder=" 20 - 1000 τ.μ." />
     </div>
     <div id="active-group" class="form-group">
         <label for="active">Ενεργό:</label>
